@@ -10,9 +10,9 @@ Minecraft 版本列表, 来源: zh.minecraft.wiki
 
 ```jsonc
 {
+  // array of versions, from older to newer
+  // 版本数组, 从旧到新
   "versions": [
-    // array of versions, from older to newer
-    // 版本数组, 从旧到新
     "1_9_0",
     "1_10_0",
     "1_20_51",

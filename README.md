@@ -68,5 +68,5 @@ Minecraft 版本列表, 来源: zh.minecraft.wiki
 「sync every hour」(每小时同步一次)
 
 - [「github gist」查看此 gist](https://gist.github.com/sb-child/b5a133b71e0a66b26360dff030906bc6)
-- [「Raw Link」原始 json](https://gist.github.com/sb-child/b5a133b71e0a66b26360dff030906bc6/raw/160bbb130e4a3266ed3881f05627a4f5273cb263/mcvl-bds.json)
-- [「Raw Link (ghproxy)」原始 json (中国境内专供)](https://mirror.ghproxy.com/https://gist.githubusercontent.com/sb-child/b5a133b71e0a66b26360dff030906bc6/raw/160bbb130e4a3266ed3881f05627a4f5273cb263/mcvl-bds.json)
+- [「Raw Link」原始 json](https://gist.github.com/sb-child/b5a133b71e0a66b26360dff030906bc6/raw/mcvl-bds.json)
+- [「Raw Link (ghproxy)」原始 json (中国境内专供)](https://mirror.ghproxy.com/https://gist.githubusercontent.com/sb-child/b5a133b71e0a66b26360dff030906bc6/raw/mcvl-bds.json)

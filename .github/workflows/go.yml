@@ -15,43 +15,41 @@ on:
       - v_**
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     permissions:
       packages: write
       contents: write
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Set up Go
-      uses: actions/setup-go@v4
-      with:
-        go-version: '1.21'
-    
-    - name: Get gf binary
-      run: wget -O _gf https://github.com/gogf/gf/releases/latest/download/gf_linux_amd64 && chmod a+x _gf && ./_gf install -y
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.21"
 
-    - name: Build
-      run: gf build && mv ./bin/linux_amd64/mcvl ./mcvl-linux-amd64 && mv ./bin/windows_amd64/mcvl.exe ./mcvl-win-amd64.exe
+      - name: Get gf binary
+        run: wget -O _gf https://github.com/gogf/gf/releases/latest/download/gf_linux_amd64 && chmod a+x _gf && ./_gf install -y
 
-    - name: Create Github Release
-      id: create_release
-      uses: softprops/action-gh-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        name: mcvl - Release ${{ github.ref }}
-        generate_release_notes: true
-        draft: false
-        prerelease: false
+      - name: Build
+        run: gf build && mv ./bin/linux_amd64/mcvl ./mcvl-linux-amd64 && mv ./bin/windows_amd64/mcvl.exe ./mcvl-win-amd64.exe
 
-    - name: Upload Release Asset
-      id: upload-release-asset
-      uses: alexellis/upload-assets@0.4.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        asset_paths: '["oh-my-duo-*", "OhMyDuo.service", "manifest/config/config.example.yaml"]'
-        
+      - name: Create Github Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          name: mcvl - Release ${{ github.ref }}
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: alexellis/upload-assets@0.4.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          asset_paths: '["mcvl-*"]'

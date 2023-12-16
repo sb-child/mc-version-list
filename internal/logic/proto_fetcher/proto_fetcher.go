@@ -1,4 +1,4 @@
-package detail
+package protofetcher
 
 import (
 	"context"
@@ -13,24 +13,24 @@ import (
 	"github.com/gogf/gf/v2/os/gctx"
 )
 
-type sDetail struct {
+type sProtoFetcher struct {
 	cli *gclient.Client
 	url string
 }
 
 func init() {
-	service.RegisterDetail(New())
+	service.RegisterProtoFetcher(New())
 }
 
-func New() *sDetail {
-	x := sDetail{}
+func New() *sProtoFetcher {
+	x := sProtoFetcher{}
 	if err := x.Init(); err != nil {
-		g.Log().Fatalf(gctx.GetInitCtx(), "Failed to init Detail service: %s", err.Error())
+		g.Log().Fatalf(gctx.GetInitCtx(), "Failed to init ProtoFetcher service: %s", err.Error())
 	}
 	return &x
 }
 
-func (x *sDetail) Init() error {
+func (x *sProtoFetcher) Init() error {
 	x.cli = utility.DefaultClient()
 	// x.cli.SetHeader("Referer", "https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9%E7%89%88%E4%B8%93%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8?variant=zh-cn")
 	// x.cli.SetHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8")
@@ -43,7 +43,7 @@ func (x *sDetail) Init() error {
 	return nil
 }
 
-func (x *sDetail) Fetch(ctx context.Context) (utility.Protocols, error) {
+func (x *sProtoFetcher) Fetch(ctx context.Context) (utility.Protocols, error) {
 	g.Log().Infof(ctx, "Fetching %s", x.url)
 	req, err := x.cli.Get(ctx, x.url)
 	if err != nil {

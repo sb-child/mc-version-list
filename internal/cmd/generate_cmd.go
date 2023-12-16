@@ -19,7 +19,7 @@ func GenerateCmd(ctx context.Context, parser *gcmd.Parser) (err error) {
 	if err != nil {
 		return gerror.Wrap(err, "Failed to fetch version data")
 	}
-	pm, err := service.Detail().Fetch(ctx)
+	pm, err := service.ProtoFetcher().Fetch(ctx)
 	if err != nil {
 		return gerror.Wrap(err, "Failed to fetch protocol data")
 	}

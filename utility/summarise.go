@@ -3,6 +3,8 @@ package utility
 import (
 	"sort"
 	"strings"
+
+	"github.com/gogf/gf/v2/os/gtime"
 )
 
 type SummarizedVersions map[string]SummarizedVersion
@@ -22,6 +24,7 @@ type SummarizedVersion struct {
 type Summarized struct {
 	VersionList []string           `json:"versions"`
 	Items       SummarizedVersions `json:"v"`
+	UpdatedAt   uint64             `json:"update_timestamp_ms"`
 }
 
 func Summarize(vm Versions, pm Protocols) Summarized {
@@ -65,5 +68,6 @@ func Summarize(vm Versions, pm Protocols) Summarized {
 	return Summarized{
 		VersionList: vls,
 		Items:       svs,
+		UpdatedAt:   uint64(gtime.TimestampMilli()),
 	}
 }

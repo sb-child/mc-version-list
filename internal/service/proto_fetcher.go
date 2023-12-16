@@ -11,23 +11,23 @@ import (
 )
 
 type (
-	IDetail interface {
+	IProtoFetcher interface {
 		Init() error
 		Fetch(ctx context.Context) (utility.Protocols, error)
 	}
 )
 
 var (
-	localDetail IDetail
+	localProtoFetcher IProtoFetcher
 )
 
-func Detail() IDetail {
-	if localDetail == nil {
-		panic("implement not found for interface IDetail, forgot register?")
+func ProtoFetcher() IProtoFetcher {
+	if localProtoFetcher == nil {
+		panic("implement not found for interface IProtoFetcher, forgot register?")
 	}
-	return localDetail
+	return localProtoFetcher
 }
 
-func RegisterDetail(i IDetail) {
-	localDetail = i
+func RegisterProtoFetcher(i IProtoFetcher) {
+	localProtoFetcher = i
 }

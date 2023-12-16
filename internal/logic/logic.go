@@ -5,6 +5,6 @@
 package logic
 
 import (
-	_ "mcvl/internal/logic/detail"
+	_ "mcvl/internal/logic/proto_fetcher"
 	_ "mcvl/internal/logic/ver_fetcher"
 )

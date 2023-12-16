@@ -1,0 +1,27 @@
+name: Go
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download current release
+        run: |
+          wget -O mcvl https://github.com/sb-child/mc-version-list/releases/latest/download/mcvl-linux-amd64 && chmod a+x mcvl
+
+      - name: Fetch
+        run: ./mcvl generate -f=out.json || exit 1
+
+      - uses: actions/checkout@v3
+      - name: Update gist
+        uses: exuanbo/actions-deploy-gist@v1
+        with:
+          # a new personal access token, only the gist scope is needed
+          token: ${{ secrets.TOKEN }}
+          gist_id: b5a133b71e0a66b26360dff030906bc6
+          file_path: out.json
+          file_type: json

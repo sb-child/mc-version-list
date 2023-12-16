@@ -25,3 +25,4 @@ jobs:
           gist_id: b5a133b71e0a66b26360dff030906bc6
           file_path: out.json
           file_type: json
+          gist_file_name: mcvl-bds.json

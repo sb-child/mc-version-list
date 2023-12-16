@@ -17,7 +17,6 @@ jobs:
       - name: Fetch
         run: ./mcvl generate -f=out.json || exit 1
 
-      - uses: actions/checkout@v3
       - name: Update gist
         uses: exuanbo/actions-deploy-gist@v1
         with:

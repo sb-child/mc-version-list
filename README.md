@@ -34,6 +34,8 @@ Minecraft 版本列表, 来源: zh.minecraft.wiki
       // release version 是否为正式版
       "released": true,
       // protocol version 协议版本
+      // -1 means unknown, -2 means currently not found
+      // -1: 未知, -2: 目前未找到
       "protocol": 340,
       // major 主版本号
       "major_v": 1,

@@ -22,9 +22,11 @@ type SummarizedVersion struct {
 }
 
 type Summarized struct {
-	VersionList []string           `json:"versions"`
-	Items       SummarizedVersions `json:"v"`
-	UpdatedAt   uint64             `json:"update_timestamp_ms"`
+	VersionList         []string           `json:"versions"`
+	Items               SummarizedVersions `json:"v"`
+	ReverseVersionList  map[string]string  `json:"rv"`
+	ReverseProtocolList map[int64][]string `json:"rp"`
+	UpdatedAt           uint64             `json:"update_timestamp_ms"`
 }
 
 func Summarize(vm Versions, pm Protocols) Summarized {
@@ -46,9 +48,12 @@ func Summarize(vm Versions, pm Protocols) Summarized {
 	})
 	vls := make([]string, 0, len(vm))
 	svs := make(SummarizedVersions, len(vm))
+	rv := make(map[string]string, len(vm))
+	rp := make(map[int64][]string, len(vm))
 	for _, v := range vl {
-		vv := strings.ReplaceAll(v.SimpleVersion, ".", "_")
-		vls = append(vls, vv)
+		vv := strings.ReplaceAll(v.Version, ".", "_")
+		svv := strings.ReplaceAll(v.SimpleVersion, ".", "_")
+		vls = append(vls, svv)
 		sv := SummarizedVersion{
 			Version:       v.Version,
 			SimpleVersion: v.SimpleVersion,
@@ -63,11 +68,20 @@ func Summarize(vm Versions, pm Protocols) Summarized {
 		if p, ok := pm[v.Page]; ok {
 			sv.Protocol = p.Version
 		}
-		svs[vv] = sv
+		svs[svv] = sv
+		rv[vv] = svv
+		if p, ok := rp[sv.Protocol]; ok {
+			p = append(p, svv)
+			rp[sv.Protocol] = p
+		} else {
+			rp[sv.Protocol] = []string{svv}
+		}
 	}
 	return Summarized{
-		VersionList: vls,
-		Items:       svs,
-		UpdatedAt:   uint64(gtime.TimestampMilli()),
+		VersionList:         vls,
+		Items:               svs,
+		UpdatedAt:           uint64(gtime.TimestampMilli()),
+		ReverseVersionList:  rv,
+		ReverseProtocolList: rp,
 	}
 }

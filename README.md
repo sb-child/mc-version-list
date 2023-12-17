@@ -70,3 +70,18 @@ Minecraft 版本列表, 来源: zh.minecraft.wiki
 - [「github gist」查看此 gist](https://gist.github.com/sb-child/b5a133b71e0a66b26360dff030906bc6)
 - [「Raw Link」原始 json](https://gist.github.com/sb-child/b5a133b71e0a66b26360dff030906bc6/raw/mcvl-bds.json)
 - [「Raw Link (ghproxy)」原始 json (中国境内专供)](https://mirror.ghproxy.com/https://gist.githubusercontent.com/sb-child/b5a133b71e0a66b26360dff030906bc6/raw/mcvl-bds.json)
+
+## 本地使用
+
+1. (手动编译) 拉取本 repo 的代码, 安装 `goframe cli`, 执行 `gf build` 编译代码, mcvl 程序会输出在 `bin/[系统架构]` 目录下
+
+1. (或下载预编译版)
+
+```bash
+# linux
+wget -O mcvl https://github.com/sb-child/mc-version-list/releases/latest/download/mcvl-linux-amd64 && chmod a+x mcvl
+# windows
+下载 https://github.com/sb-child/mc-version-list/releases/latest/download/mcvl-win-amd64.exe
+```
+
+1. 执行 `./mcvl generate` 将结果直接输出, 或者 `./mcvl generate -f=文件名` 将结果写入文件

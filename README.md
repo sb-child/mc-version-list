@@ -1,8 +1,8 @@
 # mc-version-list
 
-the version list of Minecraft (source: zh.minecraft.wiki)
+the version list of Minecraft (source: <https://zh.minecraft.wiki>)
 
-Minecraft 版本列表, 来源: zh.minecraft.wiki
+Minecraft 版本列表, 来源: <https://zh.minecraft.wiki>
 
 ## BDS Version List (基岩版专用服务器 - 版本及协议版本列表)
 
